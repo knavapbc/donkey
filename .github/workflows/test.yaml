@@ -21,11 +21,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: donkey scream 2
         run: ls
-#        - uses: hashicorp/setup-terraform@v3
-#        - name: Terraform Init
-#        id: init
-#          run: terraform init
-#      - name: Terraform Plan
-#        id: plan
-#        run: terraform plan -no-color
-#        continue-on-error: true
+        - uses: hashicorp/setup-terraform@v3
+        - name: Terraform Init
+        id: init
+          run: terraform init
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -no-color
+        continue-on-error: true
