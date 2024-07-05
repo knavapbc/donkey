@@ -1,4 +1,4 @@
-# This is a basic workflow to help you get started with Actions
+8# This is a basic workflow to help you get started with Actions
 
 name: donkey
 
@@ -15,7 +15,7 @@ jobs:
   name: donkey
     runs-on: ubuntu-latest
     steps:
-        id: donkshove
+      - id: donkshove
         name: donkey scream
         run: ls
       - uses: actions/checkout@v4
