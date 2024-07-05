@@ -18,11 +18,11 @@ jobs:
     steps:
       - name: donkey scream
         run: ls
-#    - uses: actions/checkout@v4
-#    - uses: hashicorp/setup-terraform@v3
-#    - name: Terraform Init
-#      id: init
-#      run: terraform init
+    - uses: actions/checkout@v4
+    - uses: hashicorp/setup-terraform@v3
+    - name: Terraform Init
+      id: init
+      run: terraform init
 #    - name: Terraform Plan
 #      id: plan
 #      run: terraform plan -no-color
