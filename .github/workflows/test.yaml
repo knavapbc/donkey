@@ -19,7 +19,7 @@ jobs:
         with:
           status: ${{ job.status }}
           notify_when: "failure"
-          notification_title: "{workflow} is failing"
+          notification_title: "donked out"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
       - name: donkey scream
