@@ -25,15 +25,51 @@ jobs:
         run: terraform init
       - name: Terraform Plan
         id: plan
-       - name: Notify Slack Action
-         uses: ravsamhq/notify-slack-action@2.3.0
-         with:
-           status: ${{ job.status }}
-           notify_when: "failure"
-           notification_title: "donked out"
-         env:
-           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
         run: terraform plan -no-color
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+name: notify slack
+        id: slack
+        uses: slackapi/slack-github-action@v1.24.0
+        # https://api.slack.com/apps/<your-app-id>/incoming-webhooks
+        if: ${{ failure() }}
+        with:
+          channel-id: 'T07AYTHK0QJ' # slack channel #alerts-test
+          payload: |
+            {
+              "text": "GitHub Action failed",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Production deployment check failed* :fire_engine:\n High error rate detected after deployment! Rolling back..."
+                  }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": ":github: Failed action"
+                      },
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                    },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": ":grafana: Grafana dashboard"
+                      },
+                      "url": "https://www.google.com/"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
