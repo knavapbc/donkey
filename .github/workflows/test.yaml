@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-#name: donkey
+name: donkey
 
 # Controls when the action will run. 
 on:
@@ -14,7 +14,7 @@ jobs:
   donkey:
 #  name: donkey
     runs-on: ubuntu-latest
-     steps:
+    steps:
       - name: donkey scream
         run: ls
         - uses: actions/checkout@v4
