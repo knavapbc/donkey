@@ -22,7 +22,7 @@ jobs:
         run: ls
       - uses: hashicorp/setup-terraform@v3
       - name: Terraform Init
-        id: init
+#        id: init
         run: terraform init
 #      - name: Terraform Plan
 #        id: plan
