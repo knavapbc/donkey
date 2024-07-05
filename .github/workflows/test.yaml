@@ -14,14 +14,6 @@ jobs:
   donkey:
     runs-on: ubuntu-latest
     steps:
-      - name: Notify Slack Action
-        uses: ravsamhq/notify-slack-action@2.3.0
-        with:
-          status: ${{ job.status }}
-          notify_when: "failure"
-          notification_title: "donked out"
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
       - name: donkey scream
         run: ls
       - uses: actions/checkout@v4
@@ -33,6 +25,14 @@ jobs:
         run: terraform init
       - name: Terraform Plan
         id: plan
+       - name: Notify Slack Action
+         uses: ravsamhq/notify-slack-action@2.3.0
+         with:
+           status: ${{ job.status }}
+           notify_when: "failure"
+           notification_title: "donked out"
+         env:
+           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
         run: terraform plan -no-color
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
