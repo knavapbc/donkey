@@ -14,6 +14,14 @@ jobs:
   donkey:
     runs-on: ubuntu-latest
     steps:
+      - name: Notify Slack Action
+        uses: ravsamhq/notify-slack-action@2.3.0
+        with:
+          status: ${{ job.status }}
+          notify_when: "failure"
+          notification_title: "{workflow} is failing"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
       - name: donkey scream
         run: ls
       - uses: actions/checkout@v4
@@ -29,12 +37,3 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - name: Notify Slack Action
-        uses: ravsamhq/notify-slack-action@2.3.0
-#        if: ${{ always() && github.ref_name == 'main' }}
-        with:
-          status: ${{ job.status }}
-          notify_when: "failure"
-          notification_title: "{workflow} is failing"
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
