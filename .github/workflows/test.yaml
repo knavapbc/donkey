@@ -12,7 +12,7 @@ on:
 
 jobs:
   donkey:
-  name: donkey
+#  name: donkey
     runs-on: ubuntu-latest
     steps:
 #      - id: donkshove
