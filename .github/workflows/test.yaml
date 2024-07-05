@@ -22,9 +22,9 @@ jobs:
         run: ls
       - uses: hashicorp/setup-terraform@v3
       - name: Terraform Init
-          id: init
+        id: init
           run: terraform init
       - name: Terraform Plan
-          id: plan
+        id: plan
           run: terraform plan -no-color
           continue-on-error: true
