@@ -12,7 +12,6 @@ on:
 
 jobs:
   donkey:
-#  name: donkey
     runs-on: ubuntu-latest
     steps:
       - name: donkey scream
