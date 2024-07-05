@@ -33,7 +33,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
     steps:
       - name: Notify Slack Action
-      - uses: ravsamhq/notify-slack-action@2.3.0
+        uses: ravsamhq/notify-slack-action@2.3.0
         if: ${{ always() && github.ref_name == 'main' }}
         with:
           status: ${{ job.status }}
