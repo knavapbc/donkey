@@ -15,8 +15,8 @@ jobs:
   name: donkey
     runs-on: ubuntu-latest
     steps:
-      - id: donkshove
-        name: donkey scream
+#      - id: donkshove
+      - name: donkey scream
         run: ls
       - uses: actions/checkout@v4
       - name: donkey scream 2
