@@ -15,7 +15,6 @@ jobs:
     steps:
       - name: donkey scream
         run: ls
-    steps:
     - uses: actions/checkout@v4
     - uses: hashicorp/setup-terraform@v3
     - name: Terraform Init
