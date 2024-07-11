@@ -11,13 +11,13 @@ on:
 
 
 jobs:
-  donkey:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: donkey scream
+      - name: test scream
         run: ls
       - uses: actions/checkout@v4
-      - name: donkey scream 2
+      - name: test scream 2
         run: ls
       - uses: hashicorp/setup-terraform@v3
       - name: Terraform Init
