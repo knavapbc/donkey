@@ -63,4 +63,3 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
-
