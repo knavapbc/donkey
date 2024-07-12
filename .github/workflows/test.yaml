@@ -41,7 +41,7 @@ jobs:
                   "text": {
                     "type": "mrkdwn",
                     "text": "*Production deployment check failed* :fire_engine:\n High error rate detected after deployment! Rolling back..."
-                  }
+                }
                 },
                 {
                   "type": "actions",
@@ -52,7 +52,7 @@ jobs:
                         "type": "plain_text",
                         "text": ":github: Failed action"
                       },
- #                     "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                     },
                   ]
                 }
