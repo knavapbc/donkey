@@ -28,7 +28,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: notify slack
         id: slack
-        uses: slackapi/slack-github-action@v1.26.0
+        uses: slackapi/slack-github-action@v1.24.0
+        # https://api.slack.com/apps/<your-app-id>/incoming-webhooks
         if: ${{ failure() }}
         with:
           channel-id: 'T07AYTHK0QJ' # slack channel #alerts-test
@@ -41,7 +42,7 @@ jobs:
                   "text": {
                     "type": "mrkdwn",
                     "text": "*Production deployment check failed* :fire_engine:\n High error rate detected after deployment! Rolling back..."
-                }
+                  }
                 },
                 {
                   "type": "actions",
@@ -54,6 +55,14 @@ jobs:
                       },
                       "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                     },
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": ":grafana: Grafana dashboard"
+                      },
+                      "url": "https://www.google.com/"
+                    }
                   ]
                 }
               ]
