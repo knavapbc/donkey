@@ -1,5 +1,7 @@
+# This is a basic workflow to help you get started with Actions
+
 name: test
-#
+
 # Controls when the action will run. 
 on:
   pull_request:
@@ -42,10 +44,9 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Terraform apply failure*"
+                    "text": "*Production deployment check failed* :fire_engine:\n High error rate detected after deployment! Rolling back..."
                   }
-                }
-            },
+                },
                 {
                   "type": "actions",
                   "elements": [
@@ -53,7 +54,7 @@ jobs:
                       "type": "button",
                       "text": {
                         "type": "plain_text",
-                        "text": "Link to failed job"
+                        "text": ":github: Failed action"
                       },
                       "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                     },
@@ -64,3 +65,4 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
