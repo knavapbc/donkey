@@ -25,12 +25,12 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - name: notify slack
+      - name: notify slack # notify any terraform failiure via slack message in channel #ab2d-bcda-dpc-platform
         id: slack
         uses: slackapi/slack-github-action@v1.26.0
         if: ${{ failure() }}
         with:
-          channel-id: 'T07AYTHK0QJ' # slack channel #alerts-test
+          channel-id: 'T07AYTHK0QJ' # slack channel to report terraform apply fail
           payload: |
             {
               "text": "GitHub Action failed",
