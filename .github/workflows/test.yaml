@@ -31,8 +31,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: notify slack
         id: slack
-        uses: slackapi/slack-github-action@v1.24.0
-        # https://api.slack.com/apps/<your-app-id>/incoming-webhooks
+        uses: slackapi/slack-github-action@v1.26.0
         if: ${{ failure() }}
         with:
           channel-id: 'T07AYTHK0QJ' # slack channel #alerts-test
