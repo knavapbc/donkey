@@ -41,7 +41,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Production deployment check failed* :fire_engine:\n High error rate detected after deployment! Rolling back..."
+                    "text": "*Terraform apply failure*"
                   }
                 },
                 {
@@ -51,7 +51,7 @@ jobs:
                       "type": "button",
                       "text": {
                         "type": "plain_text",
-                        "text": ":github: Failed action"
+                        "text": "Link to failed job"
                       },
                       "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                     },
