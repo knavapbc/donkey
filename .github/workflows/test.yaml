@@ -39,7 +39,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "*Terraform apply failed*/nRun ID:${{ github.run_id }}"
+                    "text": "*Terraform apply failed*\nRun ID:${{ github.run_id }}"
                   }
                 },
                 {
