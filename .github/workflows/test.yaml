@@ -44,7 +44,8 @@ jobs:
                     "type": "mrkdwn",
                     "text": "*Terraform apply failure*"
                   }
-                },
+                }
+            },
                 {
                   "type": "actions",
                   "elements": [
