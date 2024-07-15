@@ -31,7 +31,7 @@ jobs:
         if: ${{ failure() }}
         with:
           channel-id: 'T07AYTHK0QJ' # slack channel to report terraform apply fail
-          slack-message: "GitHub build result: ${ text: 'donked' }"
+          slack-message: "GitHub build result: ${{ text: 'donked' }}"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
