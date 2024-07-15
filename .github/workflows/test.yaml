@@ -34,4 +34,4 @@ jobs:
           slack-message: "GitHub build result: ${{ text: 'donked' }}"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+#          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
