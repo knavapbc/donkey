@@ -31,32 +31,7 @@ jobs:
         if: ${{ failure() }}
         with:
           channel-id: 'T07AYTHK0QJ' # slack channel to report terraform apply fail
-          payload: |
-            {
-              "text": "GitHub Action failed",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*Terraform apply failed*\nRun ID:${{ github.run_id }}"
-                  }
-                },
-                {
-                  "type": "actions",
-                  "elements": [
-                    {
-                      "type": "button",
-                      "text": {
-                        "type": "plain_text",
-                        "text": "Link to failed job"
-                      },
-                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-                    }
-                  ]
-                }
-              ]
-            }
+          slack-message: "GitHub build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
