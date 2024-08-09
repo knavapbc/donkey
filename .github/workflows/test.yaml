@@ -31,6 +31,6 @@ jobs:
         if: ${{ failure() }}
         with:
           channel-id: 'C07B1CA23DJ' # slack channel to report terraform apply fail
-          slack-message: "Terraform apply failure\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}" # message that will be sent to the slack channel with the url
+          slack-message: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
         env:
            SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
